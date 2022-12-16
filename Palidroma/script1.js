@@ -1,20 +1,31 @@
 console.log('JS OK');
 
 const result = document.getElementById('result');
-
-const word = prompt('Inserisci una parola');
-
-const wordReverse = turnWord(word);
+const textElement = document.getElementById('text');
+const button = document.getElementById('button');
 
 
-let resultMessage = 'Non palindroma'; 
 
-if (word === wordReverse) {
-    console.log('Palindroma');
-    resultMessage = 'Palindroma';
-} 
+button.addEventListener('click', function(){
+
+    const valueText = textElement.value.trim();
+
+    console.log(valueText);
 
 
+    const wordReverse = turnWord(valueText);
+
+    let resultMessage = 'Non palindroma'; 
+
+    if (valueText === wordReverse) {
+         console.log('Palindroma');
+        resultMessage = 'Palindroma';
+    } 
+
+
+    result.innerText = resultMessage;
+
+});
 
 function turnWord(word) {
     let wordReversed = '';
@@ -29,4 +40,3 @@ function turnWord(word) {
 }
 
 
-result.innerText = resultMessage;
